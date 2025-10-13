@@ -1140,6 +1140,11 @@ opacity: 0.5;
     .process-step:nth-child(even),
     .process-step:nth-child(odd) {
         align-self: center;
+  .how-it-works-section {
+  background-color: var(--color-background-dark);
+  border-radius: 28px;
+  margin: 0;
+}
     }
 }
 @media (max-width: 768px) {
@@ -1467,4 +1472,5 @@ opacity: 0.5;
 
 
 }
+
 
