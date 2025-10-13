@@ -1253,9 +1253,9 @@ opacity: 0.5;
   background-color: var(--color-background-dark);
   color: var(--color-text-light);
   padding-top: 120px;
-  padding-bottom: 120px;
+  padding-bottom: 180px;
+  height:auto;
   position: relative;
-  overflow: hidden;
 }
 .footer-bg-image {
   position: absolute;
@@ -1467,3 +1467,4 @@ opacity: 0.5;
 
 
 }
+
