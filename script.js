@@ -56,6 +56,19 @@ const scroll = new LocomotiveScroll({
   smooth: true,
   smoothMobile: true,
 });
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault(); // Stop the default jump
+
+    const target = this.getAttribute('href');
+    const targetElem = document.querySelector(target);
+
+    if (targetElem) {
+      // Tell Locomotive Scroll to scroll to it smoothly
+      scroll.scrollTo(targetElem);
+    }
+  });
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log('dropdown-wheel-fix loaded');
@@ -125,3 +138,4 @@ document.addEventListener("click", e => {
     document.querySelectorAll(".custom-select").forEach(s => s.classList.remove("open"));
   }
 });
+
