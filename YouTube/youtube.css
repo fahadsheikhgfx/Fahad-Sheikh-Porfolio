@@ -221,14 +221,15 @@ margin: 2% ;
   font-family: var(--font-main);
   font-weight: 500;
   font-size: 15px;
-  color: var(--color-text-dark);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 .main-nav a:hover {
   color: var(--color-primary);
 }
-
+.main-nav a.active{
+    color: var(--color-text-dark);
+  }
   
 }
 
@@ -542,6 +543,7 @@ box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     
 }
  
+
 
 
 
