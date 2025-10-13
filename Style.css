@@ -1260,6 +1260,7 @@ opacity: 0.5;
   padding-top: 120px;
   padding-bottom: 180px;
   height:auto;
+  overflow:visible;
   position: relative;
 }
 .footer-bg-image {
@@ -1472,5 +1473,6 @@ opacity: 0.5;
 
 
 }
+
 
 
