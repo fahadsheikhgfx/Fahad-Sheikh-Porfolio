@@ -382,38 +382,48 @@
 </footer>
 
 
-
-
-
-
 <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
-<script>document.addEventListener("DOMContentLoaded", () => {
+<script>
+window.addEventListener("load", () => {
+
   const scroll = new LocomotiveScroll({
-    el: document.querySelector("[data-scroll-container]"),
+    el: document.querySelector('[data-scroll-container]'),
     smooth: true,
-    smoothMobile: true,   
-    lerp: 0.1             
+    smoothMobile: true,
   });
-});
+
 
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault(); // Stop the default jump
-
-    const target = this.getAttribute('href');
-    const targetElem = document.querySelector(target);
-
-    if (targetElem) {
-      // Tell Locomotive Scroll to scroll to it smoothly
-      scroll.scrollTo(targetElem);
-    }
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = this.getAttribute('href');
+      const targetElem = document.querySelector(target);
+      if (targetElem) scroll.scrollTo(targetElem);
+    });
   });
+
+
+  window.addEventListener("resize", () => scroll.update());
 });
-  
+
+  function checkScreen() {
+    if (window.innerWidth < 1024) { 
+      document.getElementById("mobile-message").style.display = "block";
+      document.getElementById("desktop-content").style.display = "none";
+    } else {
+      document.getElementById("mobile-message").style.display = "none";
+      document.getElementById("desktop-content").style.display = "block";
+    }
+  }
+
+  checkScreen();
+  window.addEventListener("resize", checkScreen);
+
 </script>
 
 
 </body>
+
 
 
 
