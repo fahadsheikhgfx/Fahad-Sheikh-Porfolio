@@ -209,15 +209,13 @@
 
 <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
 <script>document.addEventListener("DOMContentLoaded", () => {
-  const scroll = new LocomotiveScroll({
-    el: document.querySelector("[data-scroll-container]"),
-    smooth: true,
-    smoothMobile: true,   
-    lerp: 0.1             
-  });
+ // LocomotiveScroll initialization
+const scroll = new LocomotiveScroll({
+  el: document.querySelector('[data-scroll-container]'),
+  smooth: true,
+  smoothMobile: true,
 });
-
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
     e.preventDefault(); // Stop the default jump
 
@@ -230,6 +228,7 @@
     }
   });
 });
+
 
       function checkScreen() {
       if (window.innerWidth < 1024) { 
@@ -254,6 +253,7 @@
 
 
 </body>
+
 
 
 
