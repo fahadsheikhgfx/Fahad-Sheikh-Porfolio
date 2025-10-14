@@ -389,51 +389,12 @@
 </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  // Initialize locomotive scroll
-  const scroll = new LocomotiveScroll({
-    el: document.querySelector("[data-scroll-container]"),
-    smooth: true,
-    smoothMobile: true,
-    lerp: 0.1
-  });
 
-  // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-
-      const target = this.getAttribute('href');
-      const targetElem = document.querySelector(target);
-
-      if (targetElem) {
-        scroll.scrollTo(targetElem);
-      }
-    });
-  });
-
-  // Screen size check for desktop vs mobile
-  function checkScreen() {
-    if (window.innerWidth < 1070) {
-      document.getElementById("mobile-message").style.display = "block";
-      document.getElementById("desktop-content").style.display = "none";
-    } else {
-      document.getElementById("mobile-message").style.display = "none";
-      document.getElementById("desktop-content").style.display = "block";
-    }
-  }
-
-  // Run on load and on resize
-  checkScreen();
-  window.addEventListener("resize", checkScreen);
-});
-</script>
 
 
 
 </body>
+
 
 
 
