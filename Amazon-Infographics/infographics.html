@@ -388,54 +388,51 @@
   <h1>⚠ Desktop Mode Required</h1>
   <p>Please switch to desktop mode to view my portfolio in full experience.</p>
 </div>
+  
 <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const scroll = new LocomotiveScroll({
-      el: document.querySelector("[data-scroll-container]"),
-      smooth: true,
-      smoothMobile: true,
-      lerp: 0.1
-    });
 
-    // Smooth anchor scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener("click", function (e) {
-        e.preventDefault(); // Prevent default jump
-        const target = this.getAttribute("href");
-        const targetElem = document.querySelector(target);
+    // Wait until images and layout are fully loaded
+    window.addEventListener("load", () => {
+      const scroll = new LocomotiveScroll({
+        el: document.querySelector("[data-scroll-container]"),
+        smooth: true,
+        smoothMobile: true,
+        lerp: 0.1
+      });
 
-        if (targetElem) {
-          // Tell Locomotive Scroll to scroll to it smoothly
-          scroll.scrollTo(targetElem);
-        }
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) scroll.scrollTo(target);
+        });
       });
     });
 
-    // Screen size checker
+    // Screen size check
     function checkScreen() {
       if (window.innerWidth < 1070) {
-        // Mobile or tablet view
         document.getElementById("mobile-message").style.display = "block";
         document.getElementById("desktop-content").style.display = "none";
       } else {
-        // Desktop view
         document.getElementById("mobile-message").style.display = "none";
         document.getElementById("desktop-content").style.display = "block";
       }
     }
 
-    // Run on load
     checkScreen();
-
-    // Run on resize (when user switches between modes)
     window.addEventListener("resize", checkScreen);
   });
 </script>
 
 
+
 </body>
+
 
 
 
