@@ -206,16 +206,17 @@
   <p>Please switch to desktop mode to view my portfolio in full experience.</p>
 </div>
 
-
 <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
 <script>document.addEventListener("DOMContentLoaded", () => {
- // LocomotiveScroll initialization
-const scroll = new LocomotiveScroll({
-  el: document.querySelector('[data-scroll-container]'),
-  smooth: true,
-  smoothMobile: true,
+  const scroll = new LocomotiveScroll({
+    el: document.querySelector("[data-scroll-container]"),
+    smooth: true,
+    smoothMobile: true,   
+    lerp: 0.1             
+  });
 });
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
     e.preventDefault(); // Stop the default jump
 
@@ -228,31 +229,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
-
-
-      function checkScreen() {
-      if (window.innerWidth < 1024) { 
-        // mobile/tablet
-        document.getElementById("mobile-message").style.display = "block";
-        document.getElementById("desktop-content").style.display = "none";
-      } else {
-        // desktop
-        document.getElementById("mobile-message").style.display = "none";
-        document.getElementById("desktop-content").style.display = "block";
-      }
-    }
-
-    // run on load
-    checkScreen();
-
-    // run on resize (jab user desktop mode kare)
-    window.addEventListener("resize", checkScreen);
-
+  
 </script>
-      
 
 
 </body>
+
 
 
 
