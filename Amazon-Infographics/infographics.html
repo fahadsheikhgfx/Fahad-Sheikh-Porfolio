@@ -399,6 +399,20 @@
   });
 });
 
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault(); // Stop the default jump
+
+    const target = this.getAttribute('href');
+    const targetElem = document.querySelector(target);
+
+    if (targetElem) {
+      // Tell Locomotive Scroll to scroll to it smoothly
+      scroll.scrollTo(targetElem);
+    }
+  });
+});
+  
       function checkScreen() {
       if (window.innerWidth < 1070) { 
         // mobile/tablet
@@ -421,6 +435,7 @@
 
 
 </body>
+
 
 
 
