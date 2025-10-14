@@ -216,24 +216,28 @@
   });
 });
 
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault(); // Stop the default jump
-
-    const target = this.getAttribute('href');
-    const targetElem = document.querySelector(target);
-
-    if (targetElem) {
-      // Tell Locomotive Scroll to scroll to it smoothly
-      scroll.scrollTo(targetElem);
+      function checkScreen() {
+      if (window.innerWidth < 1024) { 
+        // mobile/tablet
+        document.getElementById("mobile-message").style.display = "block";
+        document.getElementById("desktop-content").style.display = "none";
+      } else {
+        // desktop
+        document.getElementById("mobile-message").style.display = "none";
+        document.getElementById("desktop-content").style.display = "block";
+      }
     }
-  });
-});
-  
+
+    // run on load
+    checkScreen();
+
+    // run on resize (jab user desktop mode kare)
+    window.addEventListener("resize", checkScreen);
 </script>
 
 
 </body>
+
 
 
 
