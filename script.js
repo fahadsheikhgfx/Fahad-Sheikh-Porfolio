@@ -140,3 +140,36 @@ document.addEventListener("click", e => {
   }
 });
 
+const monthNames = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
+
+const currentDate = new Date();
+const currentMonth = monthNames[currentDate.getMonth()];
+
+const projectsByMonth = {
+  January: 4,
+  February: 6,
+  March: 5,
+  April: 3,
+  May: 1,
+  June: 3,
+  July: 6,
+  August: 4,
+  September: 5,
+  October: 5,
+  November: 4,
+  December: 2
+};
+
+
+const projectsLeft = projectsByMonth[currentMonth] || 0;
+
+
+const availabilityTag = document.querySelector('.availability-tag');
+
+
+availabilityTag.textContent = `${projectsLeft} projects left in ${currentMonth}`;
+
