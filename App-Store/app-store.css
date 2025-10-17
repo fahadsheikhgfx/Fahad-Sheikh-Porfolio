@@ -320,21 +320,6 @@ transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
 }
-.footer-bg-image {
-  position: absolute;
-  top: -100px;
-  left: 0;
-  width: 100%;
-  height: 720px;
-  z-index: 0;
-  opacity: 0.5;
-}
-.footer-bg-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 28px 28px 0 0;
-}
 .footer-container {
   position: relative;
   z-index: 1;
@@ -510,6 +495,7 @@ transition: all 0.4s ease;
 .custom-option.selected {
   background-color: rgba(255, 255, 255, 0.15);
 }
+
 
 
 
