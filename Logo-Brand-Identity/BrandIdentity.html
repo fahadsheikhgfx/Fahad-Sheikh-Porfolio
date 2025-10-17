@@ -69,6 +69,9 @@
 </div>
 <div class="grid">
 <div class="video-container">
+  <div class="loader" id="loader">
+      <div class="spinner"></div>
+    </div>
   <video autoplay loop muted playsinline>
     <source src="VelvetKiss-Video-by-Fahad-Sheikkh.mp4" type="video/mp4">
     Your browser does not support the video tag.
@@ -223,21 +226,62 @@
 
 <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
+
   const scroll = new LocomotiveScroll({
-    el: document.querySelector("[data-scroll-container]"),
+    el: document.querySelector('[data-scroll-container]'),
     smooth: true,
     smoothMobile: true,
-    lerp: 0.1
   });
 
-  window.addEventListener("load", () => {
-    scroll.update(); 
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = this.getAttribute('href');
+      const targetElem = document.querySelector(target);
+      if (targetElem) scroll.scrollTo(targetElem);
+    });
   });
+
+
+  window.addEventListener("resize", () => scroll.update());
 });
+
+  function checkScreen() {
+    if (window.innerWidth < 1024) { 
+      document.getElementById("mobile-message").style.display = "block";
+      document.getElementById("desktop-content").style.display = "none";
+    } else {
+      document.getElementById("mobile-message").style.display = "none";
+      document.getElementById("desktop-content").style.display = "block";
+    }
+  }
+
+  checkScreen();
+  window.addEventListener("resize", checkScreen);
+
+
+  const video = document.getElementById('myVideo');
+    const loader = document.getElementById('loader');
+
+    // Hide loader when video is ready to play
+    video.addEventListener('canplay', () => {
+      loader.style.display = 'none';
+    });
+
+    // Show loader again when buffering
+    video.addEventListener('waiting', () => {
+      loader.style.display = 'flex';
+    });
+
+    video.addEventListener('playing', () => {
+      loader.style.display = 'none';
+    });
 </script>
 
 
 
 </body>
+
 
