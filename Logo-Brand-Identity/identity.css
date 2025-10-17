@@ -59,7 +59,10 @@ position: absolute;
 right :0px ;
 margin: 2% ;
 }
-
+.btn-light {
+  background-color: var(--color-text-light);
+  color: var(--color-text-dark);
+}
 .btn-dark {
   background-color: var(--color-text-dark);
   color: var(--color-text-light);
@@ -354,4 +357,187 @@ padding: 0 5.55vw;
 .identity{
   padding: 0 5.55vw;
 }
+}
+.footer-section {
+  background-color: var(--color-background-dark);
+  color: var(--color-text-light);
+  padding-top: 120px;
+  padding-bottom: 120px;
+  position: relative;
+  overflow: hidden;
+}
+.footer-container {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 458px 1fr;
+  gap: 80px;
+  align-items: flex-start;
+}
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+}
+.footer-cta h2 {
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -1.08px;
+  color: var(--color-text-secondary);
+  margin: 0 0 20px 0;
+}
+.footer-cta h2 .text-light {
+  color: var(--color-text-light);
+}
+.footer-contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text-light);
+  text-decoration: none;
+  font-size: 20px;
+}
+.contact-item img {
+  width: 27px;
+  height: 27px;
+}
+.message-cta p {
+  font-size: 20px;
+  line-height: 1.22;
+  letter-spacing: -0.6px;
+  margin: 0 0 20px 0;
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.form-group.small {
+  flex: 0 1 172px;
+}
+.form-group label {
+  font-size: 20px;
+  font-weight: 400;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background-color: #2b2b2b;
+  border: none;
+  border-radius: 16px;
+  padding: 16px 20px;
+  font-family: var(--font-main);
+  font-size: 16px;
+  color: var(--color-text-light);
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+.form-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10L12 15L17 10' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+}
+/* --- Custom Dropdown --- */
+.custom-select-group {
+  position: relative;
+}
+
+.custom-select {
+  position: relative;
+  background-color: #2b2b2b;
+  border-radius: 16px;
+  padding: 16px 20px;
+  color: var(--color-text-light);
+  font-family: var(--font-main);
+  font-size: 16px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.custom-select::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+  transform: translateY(-50%);
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10L12 15L17 10' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.custom-select.open {
+  border-radius: 16px 16px 0 0;
+}
+
+.custom-select-trigger {
+  display: block;
+}
+
+.custom-options {
+  position: absolute;
+  top: calc(100%);
+  left: 0;
+  right: 0;
+  background-color: #2b2b2b;
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  overflow-y:auto ;
+  max-height: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s ease;
+  z-index: 10;
+}
+.custom-options::-webkit-scrollbar{
+  display: none;
+}
+
+.custom-select.open .custom-options {
+  max-height: 240px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.custom-option {
+  display: block;
+  padding: 12px 20px;
+  font-size: 16px;
+  color: var(--color-text-light);
+  transition: all 0.2s ease;
+}
+
+.custom-option:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.custom-option.selected {
+  background-color: rgba(255, 255, 255, 0.15);
 }
