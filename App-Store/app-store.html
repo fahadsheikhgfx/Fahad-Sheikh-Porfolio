@@ -15,6 +15,7 @@
   <title>Document</title>
 </head>
 <body data-scroll-container>
+  <div id="dekstop-content">
   <header class="site-header">
   <div class="container header-container">
     <a href="#" class="brand-logo"><img class="fs-logo-header" src="FS Logo.svg" alt=""></a>
@@ -238,7 +239,148 @@
     <img src="GMGN app store listing and app icon designed by fahad sheikh gfx.png" alt="">
 </div>
 </section>
+  <footer id="contact" class="footer-section">
+  <div class="footer-bg-image">
+    <img src="${ASSET_PATH}/0fc6795ff721cfc240b53d956d58a040d5f87c34.png" alt="Abstract background image">
+  </div>
+  <div class="container footer-container">
+    <div class="footer-content">
+      <div class="footer-cta">
+        <h2>Book a call, and I’ll <span class="text-light">take care of the rest</span></h2>
+        <a href="#" class="btn btn-light">Book a Call</a>
+      </div>
+      <div class="footer-contact-info">
+        <div class="contact-details">
+          <a href="tel:+923171692809" class="contact-item">
+            <img src="Phone Icon.svg" alt="phone icon">
+            <span>+92 317 1692809</span>
+          </a>
+          <a href="mailto:fahadsheikh.gfx@gmail.com" class="contact-item">
+            <img src="Mail Icon.svg" alt="email icon">
+            <span>fahadsheikh.gfx@gmail.com</span>
+          </a>
+          <div class="contact-item">
+            <img src="Location Icon.svg" alt="location icon">
+            <span>Multan, Punjab, Pakistan</span>
+          </div>
+        </div>
+        <div class="message-cta">
+          <p>From strategy to final design, I’ll craft solutions that fit your goals. Share your project details and let’s make it happen.</p>
+          <button type="submit" form="contact-form" class="btn btn-light">Send Message</button>
+        </div>
+      </div>
+    </div>
+    <form id="contact-form" class="contact-form">
+  <div class="form-row">
+    <div class="form-group">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" placeholder="Ex. John Doe">
+    </div>
+    <div class="form-group">
+      <label for="email">Email*</label>
+      <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+    </div>
+  </div>
 
+  <div class="form-row">
+    <div class="form-group">
+      <label for="phone">Phone*</label>
+      <input type="tel" id="phone" name="phone" placeholder="Enter Phone Number" required>
+    </div>
+
+    <!-- Custom dropdown: Interest -->
+    <div class="form-group custom-select-group">
+      <label>I am interested in</label>
+      <div class="custom-select" data-name="interest">
+        <div class="custom-select-trigger">Select</div>
+        <div class="custom-options">
+          <span class="custom-option" data-value="logo">Logo</span>
+          <span class="custom-option" data-value="branding">Branding</span>
+          <span class="custom-option" data-value="amazon-design">Amazon Design</span>
+          <span class="custom-option" data-value="website-design">Website Design</span>
+          <span class="custom-option" data-value="social-media-design">Social Media Design</span>
+          <span class="custom-option" data-value="youtube-thumbnail-design">YouTube Thumbnail Design</span>
+          <span class="custom-option" data-value="app-store-listing">App Store Listing</span>
+          <span class="custom-option" data-value="music-cover-design">Music Cover Design</span>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group small">
+      <label for="budget">Budget Range*</label>
+      <input type="text" id="budget" name="budget" placeholder="Enter Range" required>
+    </div>
+
+    <!-- Custom dropdown: Currency -->
+    <div class="form-group small custom-select-group">
+      <label>Currency*</label>
+      <div class="custom-select" data-name="currency">
+        <div class="custom-select-trigger">Select</div>
+        <div class="custom-options">
+          <span class="custom-option" data-value="USD">USD</span>
+          <span class="custom-option" data-value="GBP">GBP</span>
+          <span class="custom-option" data-value="EUR">EUR</span>
+          <span class="custom-option" data-value="CAD">CAD</span>
+          <span class="custom-option" data-value="AUD">AUD</span>
+          <span class="custom-option" data-value="AED">AED</span>
+          <span class="custom-option" data-value="SAR">SAR</span>
+          <span class="custom-option" data-value="INR">INR</span>
+          <span class="custom-option" data-value="PKR">PKR</span>
+          <span class="custom-option" data-value="SGD">SGD</span>
+          <span class="custom-option" data-value="CHF">CHF</span>
+          <span class="custom-option" data-value="QAR">QAR</span>
+          <span class="custom-option" data-value="ZAR">ZAR</span>
+          <span class="custom-option" data-value="MYR">MYR</span>
+          <span class="custom-option" data-value="NZD">NZD</span>
+          <span class="custom-option" data-value="JPY">JPY</span>
+          <span class="custom-option" data-value="CNY">CNY</span>
+          <span class="custom-option" data-value="KWD">KWD</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom dropdown: Country -->
+    <div class="form-group custom-select-group">
+      <label>Country*</label>
+      <div class="custom-select" data-name="country">
+        <div class="custom-select-trigger">Select Country</div>
+        <div class="custom-options">
+          <span class="custom-option" data-value="USA">United States</span>
+          <span class="custom-option" data-value="UK">United Kingdom</span>
+          <span class="custom-option" data-value="CA">Canada</span>
+          <span class="custom-option" data-value="AU">Australia</span>
+          <span class="custom-option" data-value="UAE">United Arab Emirates</span>
+          <span class="custom-option" data-value="SA">Saudi Arabia</span>
+          <span class="custom-option" data-value="DE">Germany</span>
+          <span class="custom-option" data-value="FR">France</span>
+          <span class="custom-option" data-value="IT">Italy</span>
+          <span class="custom-option" data-value="ES">Spaim</span>
+          <span class="custom-option" data-value="NL">Netherlands</span>
+          <span class="custom-option" data-value="SG">Singapore</span>
+          <span class="custom-option" data-value="IN">India</span>
+          <span class="custom-option" data-value="PK">Pakistan</span>
+          <span class="custom-option" data-value="MY">Malaysia</span>
+          <span class="custom-option" data-value="CH">Switzerland</span>
+          <span class="custom-option" data-value="QA">Qatar</span>
+          <span class="custom-option" data-value="ZA">South Africa</span>
+          <span class="custom-option" data-value="KW">Kuwait</span>
+          <span class="custom-option" data-value="NZ">New Zealand</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="message">Your Message</label>
+    <textarea id="message" name="message" placeholder="Enter Message" rows="8"></textarea>
+  </div>
+</form>
+ </div>
+</footer>
+  </div>
 <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
 <script>
 window.addEventListener("load", () => {
@@ -282,3 +424,4 @@ window.addEventListener("load", () => {
 
 
 </body>
+
