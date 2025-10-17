@@ -343,6 +343,9 @@ transition: all 0.4s ease;
   overflow: hidden;
   padding: 0 1.38vw;
 }
+.loader{
+padding: 0 1.38vw;
+}
 .identity img {
   width: 100%;
   height: 100%;
@@ -357,6 +360,9 @@ padding: 0 5.55vw;
 .identity{
   padding: 0 5.55vw;
 }
+.loader{
+padding:0 5.55vw;
+}
 }
   .loader {
       position: absolute;
@@ -368,7 +374,7 @@ padding: 0 5.55vw;
       justify-content: center;
       align-items: center;
       background: rgba(0, 0, 0, 0.6);
-      border-radius: 12px;
+      border-radius: 28px;
       z-index: 10;
     }
     .spinner {
@@ -568,4 +574,5 @@ padding: 0 5.55vw;
 .custom-option.selected {
   background-color: rgba(255, 255, 255, 0.15);
 }
+
 
