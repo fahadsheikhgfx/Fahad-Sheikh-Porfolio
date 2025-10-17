@@ -20,12 +20,12 @@
     <a href="#" class="brand-logo"><img class="fs-logo-header" src="FS Logo.svg" alt=""></a>
     
     <nav class="main-nav ">
-      <a href="http://127.0.0.1:3000/Social Media Designs/allworks.html?serverWindowId=cb9cc7b0-89a1-46ad-8874-2c8cbf97c004" >Social Media</a>
+      <a href="../Social-Media-Designs/allworks.html" >Social Media</a>
       <a href="#testimonials">Logo Brand Identity</a>
-      <a href="http://127.0.0.1:3002/infographics.html?serverWindowId=05e99bd6-f172-4a52-a693-d1077c8ba80a" >Amazon Infograhic</a>
-      <a href="#contact"  class="active">App Store</a>
+      <a href="../Amazon-Infographics/infographics.html" >Amazon Infograhic</a>
+      <a href="App-Store/app-store.html"  class="active">App Store</a>
       <a href="#contact">Website UI UX</a>
-      <a href="http://127.0.0.1:3000/YouTube/youtube.html?serverWindowId=cb9cc7b0-89a1-46ad-8874-2c8cbf97c004">YouTube</a>
+      <a href="../Youtube/youtube.html">YouTube</a>
       <a href="#contact">Music Cover</a>
     </nav>
     <a href="#contact" class="btn btn-dark letsconnect">Lets Connect</a>
@@ -241,19 +241,44 @@
 
 <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
+
   const scroll = new LocomotiveScroll({
-    el: document.querySelector("[data-scroll-container]"),
+    el: document.querySelector('[data-scroll-container]'),
     smooth: true,
     smoothMobile: true,
-    lerp: 0.1
   });
 
-  window.addEventListener("load", () => {
-    scroll.update(); 
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = this.getAttribute('href');
+      const targetElem = document.querySelector(target);
+      if (targetElem) scroll.scrollTo(targetElem);
+    });
   });
+
+
+  window.addEventListener("resize", () => scroll.update());
 });
+
+  function checkScreen() {
+    if (window.innerWidth < 1024) { 
+      document.getElementById("mobile-message").style.display = "block";
+      document.getElementById("desktop-content").style.display = "none";
+    } else {
+      document.getElementById("mobile-message").style.display = "none";
+      document.getElementById("desktop-content").style.display = "block";
+    }
+  }
+
+  checkScreen();
+  window.addEventListener("resize", checkScreen);
+
 </script>
+
+
 
 
 </body>
