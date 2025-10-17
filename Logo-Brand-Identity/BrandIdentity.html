@@ -265,22 +265,23 @@ window.addEventListener("load", () => {
 
     // Hide loader when video is ready to play
     video.addEventListener('canplay', () => {
-      loader.style.display = 'none';
+      spinner.style.display = 'none';
     });
 
     // Show loader again when buffering
     video.addEventListener('waiting', () => {
-      loader.style.display = 'flex';
+      spinner.style.display = 'flex';
     });
 
     video.addEventListener('playing', () => {
-      loader.style.display = 'none';
+      spinner.style.display = 'none';
     });
 </script>
 
 
 
 </body>
+
 
 
 
