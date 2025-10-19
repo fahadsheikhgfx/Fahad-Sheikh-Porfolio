@@ -15,6 +15,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fahad Sheikh GFX</title>
 </head>
+<div id="desktop-content">
 <body data-scroll-container>
   <header class="site-header">
   <div class="container header-container">
@@ -124,10 +125,42 @@
 </div>
 </section>
 
+<section class="Care-Today">
+  <div class="project">
+  <p class="project-title">Care Today <p>
+  <div class="project-content">
 
+  <div class="project-row">
+    <div class="label">Overview</div>
+    <div class="content">
+     Designed social media visuals for Care Today, a media agency under the Care Group of Companies, focused on delivering up-to-the-minute news and updates. Each post was strategically crafted to reflect the brand’s credibility, relevance, and fast-paced nature of modern journalism. Through clean layouts, bold typography, and consistent visual storytelling, the designs enhanced audience engagement and reinforced Care Today’s position as a trusted digital news source.
+    </div>
+  </div>
+  <div class="project-row">
+    <div class="label">Categories</div>
+    <div class="content">Media and Entertainment</div>
+  </div>
 
-
-
+  <div class="project-row">
+    <div class="label">Client</div>
+    <div class="content">Abdullah Azhar</div>
+  </div>
+  </div>
+  </div>
+  <div class="project-grid">
+    <div class="grid">
+    <div class="care-today"><img src="Care Today/Care Today Social Media Post 01 by fahad sheikh gfx.png" alt=""></div>
+    <div class="care-today"><img src="Care Today/Care Today Social Media Post 02 by fahad sheikh gfx.png" alt=""></div>
+    <div class="care-today"><img src="Care Today/Care Today Social Media Post 03 by fahad sheikh gfx.png" alt=""></div>
+    <div class="care-today"><img src="Care Today/Care Today Social Media Post 04 by fahad sheikh gfx.png" alt=""></div>
+    <div class="care-today"><img src="Care Today/Care Today Social Media Post 05 by fahad sheikh gfx.png" alt=""></div>
+    <div class="care-today"><img src="Care Today/Care Today Social Media Post 06 by fahad sheikh gfx.png" alt=""></div>
+    <div class="care-today"><img src="Care Today/Care Today Social Media Post 07 by fahad sheikh gfx.png" alt=""></div>
+    <div class="care-today"><img src="Care Today/Care Today Social Media Post 08 by fahad sheikh gfx.png" alt=""></div>
+    <div class="care-today"><img src="Care Today/Care Today Social Media Post 09 by fahad sheikh gfx.png" alt=""></div>
+</div>
+</section>
+  
 <section class="IAUK-Immigration">
   <div class="project">
   <p class="project-title">IAUK Immigration Advisors <p>
@@ -380,8 +413,11 @@
 </form>
  </div>
 </footer>
-
-
+</div>
+<div id="mobile-message">
+  <h1>⚠ Desktop Mode Required</h1>
+  <p>Please switch to desktop mode to view my portfolio in full experience.</p>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
 <script>
 window.addEventListener("load", () => {
@@ -406,23 +442,50 @@ window.addEventListener("load", () => {
   window.addEventListener("resize", () => scroll.update());
 });
 
-  function checkScreen() {
-    if (window.innerWidth < 1024) { 
-      document.getElementById("mobile-message").style.display = "block";
-      document.getElementById("desktop-content").style.display = "none";
-    } else {
-      document.getElementById("mobile-message").style.display = "none";
-      document.getElementById("desktop-content").style.display = "block";
+   function checkScreen() {
+      if (window.innerWidth < 1024) { 
+        // mobile/tablet
+        document.getElementById("mobile-message").style.display = "block";
+        document.getElementById("desktop-content").style.display = "none";
+      } else {
+        // desktop
+        document.getElementById("mobile-message").style.display = "none";
+        document.getElementById("desktop-content").style.display = "block";
+      }
     }
-  }
 
-  checkScreen();
-  window.addEventListener("resize", checkScreen);
+    // run on load
+    checkScreen();
 
+    // run on resize (jab user desktop mode kare)
+    window.addEventListener("resize", checkScreen);
+
+
+const videoContainers = document.querySelectorAll(".video-container");
+
+videoContainers.forEach(container => {
+  const video = container.querySelector("video");
+  const loader = container.querySelector(".loader");
+
+  if (!video || !loader) return;
+
+  loader.style.display = "flex"; 
+
+  video.addEventListener("canplay", () => loader.style.display = "none");
+  video.addEventListener("playing", () => loader.style.display = "none");
+  video.addEventListener("waiting", () => loader.style.display = "flex");
+
+  // Safety fallback
+  setTimeout(() => {
+    if (!video.paused && !video.seeking) {
+      loader.style.display = "none";
+    }
+  }, 2000);
+});
 </script>
 
-
 </body>
+
 
 
 
