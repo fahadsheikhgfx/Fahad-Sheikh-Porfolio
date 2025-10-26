@@ -433,14 +433,6 @@ margin-top: 5vw;
   transform: scale(1.015);
 }
 
-/* Tablet */
-@media (max-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-
 .footer-section {
   background-color: var(--color-background-dark);
   color: var(--color-text-light);
@@ -650,6 +642,7 @@ margin-top: 5vw;
     }
 
 }
+
 
 
 
