@@ -15,7 +15,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fahad Sheikh GFX</title>
 </head>
-<div id="desktop-content">
+<div id="">
 <body data-scroll-container>
   <header class="site-header">
   <div class="container header-container">
@@ -461,30 +461,78 @@ window.addEventListener("load", () => {
     window.addEventListener("resize", checkScreen);
 
 
-const videoContainers = document.querySelectorAll(".video-container");
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('dropdown-wheel-fix loaded');
 
-videoContainers.forEach(container => {
-  const video = container.querySelector("video");
-  const loader = container.querySelector(".loader");
+  const optionsList = document.querySelectorAll('.custom-options');
+  if (!optionsList.length) console.warn('No .custom-options found — check selector');
 
-  if (!video || !loader) return;
+  optionsList.forEach(options => {
+    options.addEventListener('wheel', function (e) {
+      const select = options.closest('.custom-select');
+      if (!select || !select.classList.contains('open')) return;
 
-  loader.style.display = "flex"; 
+      const delta = e.deltaY;
+      const atTop = options.scrollTop <= 0;
+      const atBottom = Math.ceil(options.scrollTop + options.clientHeight) >= options.scrollHeight;
 
-  video.addEventListener("canplay", () => loader.style.display = "none");
-  video.addEventListener("playing", () => loader.style.display = "none");
-  video.addEventListener("waiting", () => loader.style.display = "flex");
+      if ((delta > 0 && atBottom) || (delta < 0 && atTop)) {
+        e.preventDefault();
+        e.stopPropagation();
+      } else {
+        e.stopPropagation();
+      }
+    }, { passive: false });
+  });
 
-  // Safety fallback
-  setTimeout(() => {
-    if (!video.paused && !video.seeking) {
-      loader.style.display = "none";
-    }
-  }, 2000);
+  // Optional: for LocomotiveScroll issues
+  document.querySelectorAll('.custom-select').forEach(select => {
+    const trigger = select.querySelector('...');
+    // placeholder for extra logic
+  });
+});
+
+// Custom Select Dropdown
+document.querySelectorAll(".custom-select").forEach(select => {
+  const trigger = select.querySelector(".custom-select-trigger");
+  const options = select.querySelectorAll(".custom-option");
+
+  // Toggle dropdown
+  trigger.addEventListener("click", () => {
+    document.querySelectorAll(".custom-select").forEach(s => {
+      if (s !== select) s.classList.remove("open");
+    });
+    select.classList.toggle("open");
+  });
+
+  // Option selection
+  options.forEach(option => {
+    option.addEventListener("click", () => {
+      options.forEach(o => o.classList.remove("selected"));
+      option.classList.add("selected");
+      trigger.textContent = option.textContent;
+      select.classList.remove("open");
+
+      // Save value in hidden input for form data
+      const hidden = select.querySelector("input") || document.createElement("input");
+      hidden.type = "hidden";
+      hidden.name = select.dataset.name;
+      hidden.value = option.dataset.value;
+      select.appendChild(hidden);
+    });
+  });
+});
+
+// Close dropdown on outside click
+document.addEventListener("click", e => {
+  if (!e.target.closest(".custom-select")) {
+    document.querySelectorAll(".custom-select").forEach(s => s.classList.remove("open"));
+  }
 });
 </script>
 
 </body>
+
 
 
 
