@@ -478,24 +478,27 @@ window.addEventListener("load", () => {
     }
   });
 });
-    const video = document.getElementById('myVideo');
-    const loader = document.getElementById('loader');
+const video = document.getElementById('myVideo');
+const loader = document.getElementById('loader');
 
-    // Hide loader when video is ready to play
-    video.addEventListener('canplay', () => {
-      spinner.style.display = 'none';
-    });
+// Hide loader when video is ready to play
+video.addEventListener('canplay', () => {
+  loader.style.display = 'none';
+});
 
-    // Show loader again when buffering
-    video.addEventListener('waiting', () => {
-      spinner.style.display = 'flex';
-    });
+// Show loader again when buffering
+video.addEventListener('waiting', () => {
+  loader.style.display = 'flex';
+});
 
-    video.addEventListener('playing', () => {
-      spinner.style.display = 'none';
-    });
+// Hide loader when video is playing
+video.addEventListener('playing', () => {
+  loader.style.display = 'none';
+});
+
 </script>
 </body>
+
 
 
 
