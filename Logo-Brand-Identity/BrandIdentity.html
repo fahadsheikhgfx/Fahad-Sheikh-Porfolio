@@ -478,8 +478,25 @@ window.addEventListener("load", () => {
     }
   });
 });
+    const video = document.getElementById('myVideo');
+    const loader = document.getElementById('loader');
+
+    // Hide loader when video is ready to play
+    video.addEventListener('canplay', () => {
+      spinner.style.display = 'none';
+    });
+
+    // Show loader again when buffering
+    video.addEventListener('waiting', () => {
+      spinner.style.display = 'flex';
+    });
+
+    video.addEventListener('playing', () => {
+      spinner.style.display = 'none';
+    });
 </script>
 </body>
+
 
 
 
