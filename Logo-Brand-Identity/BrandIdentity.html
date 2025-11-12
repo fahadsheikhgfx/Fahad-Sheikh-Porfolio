@@ -69,7 +69,7 @@
 </div>
 <div class="grid">
 <div class="video-container">
-  <div class="loader" id="loader"></div>
+  <div class="loader"></div>
   <video autoplay loop muted playsinline>
     <source src="VelvetKiss-Video-by-Fahad-Sheikh.mp4" type="video/mp4">
     Your browser does not support the video tag.
@@ -107,8 +107,8 @@
 </div>
 <div class="grid">
 <div class="video-container">
-  <div class="loader" id="loader"></div>
-  <video id="myVideo" autoplay loop muted playsinline>
+  <div class="loader"></div>
+  <video class="video" autoplay loop muted playsinline>
     <source src="Divine Cos,metics Video By Fahad Sheikh Gfx.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
@@ -145,8 +145,8 @@
 </div>
 <div class="grid">
 <div class="video-container">
-  <div class="loader" id="loader"></div>
-  <video id="myVideo" autoplay loop muted playsinline>
+  <div class="loader"></div>
+  <video class="video" autoplay loop muted playsinline>
     <source src="CQ Builders Video By Fahad Sheikh GFX .mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
@@ -183,8 +183,8 @@
 </div>
 <div class="grid">
 <div class="video-container">
-  <div class="loader" id="loader"></div>
-  <video id="myVideo" autoplay loop muted playsinline>
+  <div class="loader"></div>
+  <video class="video" autoplay loop muted playsinline>
     <source src="Voice of the streets video by fahad sheikh gfx.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
@@ -222,9 +222,9 @@
 </div>
 <div class="grid">
 <div class="video-container">
-  <div class="loader" id="loader"></div>
+  <div class="loader"></div>
 
-  <video id="myVideo" autoplay loop muted playsinline>
+  <video class="video" autoplay loop muted playsinline>
     <source src="Smart Heaven Video by fahad sheikh gfx.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
@@ -478,26 +478,28 @@ window.addEventListener("load", () => {
     }
   });
 });
-const video = document.getElementById('myVideo');
-const loader = document.getElementById('loader');
+const videoContainers = document.querySelectorAll('.video-container');
 
-// Hide loader when video is ready to play
-video.addEventListener('canplay', () => {
-  loader.style.display = 'none';
-});
+videoContainers.forEach(container => {
+  const video = container.querySelector('video');
+  const loader = container.querySelector('.loader');
 
-// Show loader again when buffering
-video.addEventListener('waiting', () => {
-  loader.style.display = 'flex';
-});
+  video.addEventListener('canplay', () => {
+    loader.style.display = 'none';
+  });
 
-// Hide loader when video is playing
-video.addEventListener('playing', () => {
-  loader.style.display = 'none';
+  video.addEventListener('waiting', () => {
+    loader.style.display = 'flex';
+  });
+
+  video.addEventListener('playing', () => {
+    loader.style.display = 'none';
+  });
 });
 
 </script>
 </body>
+
 
 
 
