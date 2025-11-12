@@ -171,5 +171,7 @@ const projectsLeft = projectsByMonth[currentMonth] || 0;
 const availabilityTag = document.querySelector('.availability-tag');
 
 
-availabilityTag.textContent = `${projectsLeft} projects left in ${currentMonth}`;
+availabilityTag.innerHTML = `<span class="status-dot"></span> ${projectsLeft} projects left in ${currentMonth}`;
+
+
 
