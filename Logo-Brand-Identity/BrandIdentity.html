@@ -15,9 +15,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fahad Sheikh GFX</title>
 </head>
-  <div id="desktop-content">
 <body data-scroll-container>
-  <div id="dekstop-content">
   <header class="site-header">
   <div class="container header-container">
    <a href="https://fahadsheikhgfx.com" class="brand-logo"><img class="fs-logo-header" src="FS Logo.svg" alt=""></a>
@@ -377,145 +375,112 @@
 </form>
  </div>
 </footer>
-</div>
-<div id="mobile-message">
-  <h1>⚠ Desktop Mode Required</h1>
-  <p>Please switch to desktop mode to view my portfolio in full experience.</p>
-</div>
+
 <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
 <script>
 window.addEventListener("load", () => {
+  const scrollContainer = document.querySelector('[data-scroll-container]');
+  if (!scrollContainer) {
+    console.warn("No [data-scroll-container] found!");
+    return;
+  }
 
+  // Initialize Locomotive Scroll
   const scroll = new LocomotiveScroll({
-    el: document.querySelector('[data-scroll-container]'),
+    el: scrollContainer,
     smooth: true,
     smoothMobile: true,
   });
 
-
+  // Smooth scroll for internal links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', e => {
       e.preventDefault();
-      const target = this.getAttribute('href');
-      const targetElem = document.querySelector(target);
-      if (targetElem) scroll.scrollTo(targetElem);
+      const target = document.querySelector(anchor.getAttribute('href'));
+      if (target) scroll.scrollTo(target);
     });
   });
 
-
+  // Update on resize
   window.addEventListener("resize", () => scroll.update());
-});
 
-   function checkScreen() {
-      if (window.innerWidth < 1024) { 
-        // mobile/tablet
-        document.getElementById("mobile-message").style.display = "block";
-        document.getElementById("desktop-content").style.display = "none";
-      } else {
-        // desktop
-        document.getElementById("mobile-message").style.display = "none";
-        document.getElementById("desktop-content").style.display = "block";
-      }
-    }
+  // ✅ Fix for initial white screen (delayed recalculation)
+  setTimeout(() => scroll.update(), 800);
 
-    // run on load
-    checkScreen();
-
-    // run on resize (jab user desktop mode kare)
-    window.addEventListener("resize", checkScreen);
-
-
-const videoContainers = document.querySelectorAll(".video-container");
-
-videoContainers.forEach(container => {
-  const video = container.querySelector("video");
-  const loader = container.querySelector(".loader");
-
-  if (!video || !loader) return;
-
-  loader.style.display = "flex"; 
-
-  video.addEventListener("canplay", () => loader.style.display = "none");
-  video.addEventListener("playing", () => loader.style.display = "none");
-  video.addEventListener("waiting", () => loader.style.display = "flex");
-
-  // Safety fallback
-  setTimeout(() => {
-    if (!video.paused && !video.seeking) {
-      loader.style.display = "none";
-    }
-  }, 2000);
-});
+  // ----------------------------
+  // Custom Dropdown Wheel Fix
+  // ----------------------------
   document.addEventListener('DOMContentLoaded', () => {
-  console.log('dropdown-wheel-fix loaded');
+    console.log('dropdown-wheel-fix loaded');
 
-  const optionsList = document.querySelectorAll('.custom-options');
-  if (!optionsList.length) console.warn('No .custom-options found — check selector');
+    const optionsList = document.querySelectorAll('.custom-options');
+    optionsList.forEach(options => {
+      options.addEventListener('wheel', function (e) {
+        const select = options.closest('.custom-select');
+        if (!select || !select.classList.contains('open')) return;
 
-  optionsList.forEach(options => {
-    options.addEventListener('wheel', function (e) {
-      const select = options.closest('.custom-select');
-      if (!select || !select.classList.contains('open')) return;
+        const delta = e.deltaY;
+        const atTop = options.scrollTop <= 0;
+        const atBottom = Math.ceil(options.scrollTop + options.clientHeight) >= options.scrollHeight;
 
-      const delta = e.deltaY;
-      const atTop = options.scrollTop <= 0;
-      const atBottom = Math.ceil(options.scrollTop + options.clientHeight) >= options.scrollHeight;
-
-      if ((delta > 0 && atBottom) || (delta < 0 && atTop)) {
-        e.preventDefault();
-        e.stopPropagation();
-      } else {
-        e.stopPropagation();
-      }
-    }, { passive: false });
-  });
-
-  // Optional: for LocomotiveScroll issues
-  document.querySelectorAll('.custom-select').forEach(select => {
-    const trigger = select.querySelector('...');
-    // placeholder for extra logic
-  });
-});
-
-// Custom Select Dropdown
-document.querySelectorAll(".custom-select").forEach(select => {
-  const trigger = select.querySelector(".custom-select-trigger");
-  const options = select.querySelectorAll(".custom-option");
-
-  // Toggle dropdown
-  trigger.addEventListener("click", () => {
-    document.querySelectorAll(".custom-select").forEach(s => {
-      if (s !== select) s.classList.remove("open");
-    });
-    select.classList.toggle("open");
-  });
-
-  // Option selection
-  options.forEach(option => {
-    option.addEventListener("click", () => {
-      options.forEach(o => o.classList.remove("selected"));
-      option.classList.add("selected");
-      trigger.textContent = option.textContent;
-      select.classList.remove("open");
-
-      // Save value in hidden input for form data
-      const hidden = select.querySelector("input") || document.createElement("input");
-      hidden.type = "hidden";
-      hidden.name = select.dataset.name;
-      hidden.value = option.dataset.value;
-      select.appendChild(hidden);
+        if ((delta > 0 && atBottom) || (delta < 0 && atTop)) {
+          e.preventDefault();
+          e.stopPropagation();
+        } else {
+          e.stopPropagation();
+        }
+      }, { passive: false });
     });
   });
-});
 
-// Close dropdown on outside click
-document.addEventListener("click", e => {
-  if (!e.target.closest(".custom-select")) {
-    document.querySelectorAll(".custom-select").forEach(s => s.classList.remove("open"));
-  }
+  // ----------------------------
+  // Custom Select Dropdown Logic
+  // ----------------------------
+  document.querySelectorAll(".custom-select").forEach(select => {
+    const trigger = select.querySelector(".custom-select-trigger");
+    const options = select.querySelectorAll(".custom-option");
+
+    if (!trigger) return;
+
+    // Toggle dropdown
+    trigger.addEventListener("click", () => {
+      document.querySelectorAll(".custom-select").forEach(s => {
+        if (s !== select) s.classList.remove("open");
+      });
+      select.classList.toggle("open");
+    });
+
+    // Option selection
+    options.forEach(option => {
+      option.addEventListener("click", () => {
+        options.forEach(o => o.classList.remove("selected"));
+        option.classList.add("selected");
+        trigger.textContent = option.textContent;
+        select.classList.remove("open");
+
+        // Save value in hidden input
+        let hidden = select.querySelector("input[type='hidden']");
+        if (!hidden) {
+          hidden = document.createElement("input");
+          hidden.type = "hidden";
+          hidden.name = select.dataset.name;
+          select.appendChild(hidden);
+        }
+        hidden.value = option.dataset.value;
+      });
+    });
+  });
+
+  // Close dropdown on outside click
+  document.addEventListener("click", e => {
+    if (!e.target.closest(".custom-select")) {
+      document.querySelectorAll(".custom-select").forEach(s => s.classList.remove("open"));
+    }
+  });
 });
 </script>
 </body>
+
 
 
 
