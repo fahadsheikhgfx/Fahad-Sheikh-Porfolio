@@ -443,20 +443,6 @@ window.addEventListener("load", () => {
     });
   });
 
-  // Screen mode check
-  function checkScreen() {
-    const mobileMsg = document.getElementById("mobile-message");
-    const desktopContent = document.getElementById("desktop-content");
-
-    if (!mobileMsg || !desktopContent) return;
-
-    if (window.innerWidth < 1024) {
-      mobileMsg.style.display = "block";
-      desktopContent.style.display = "none";
-    } else {
-      mobileMsg.style.display = "none";
-      desktopContent.style.display = "block";
-    }
 
     // ✅ Update scroll after layout change
     setTimeout(() => scroll.update(), 300);
@@ -547,6 +533,7 @@ window.addEventListener("load", () => {
 });
 </script>
 </body>
+
 
 
 
