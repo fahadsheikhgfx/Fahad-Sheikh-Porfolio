@@ -442,15 +442,6 @@ window.addEventListener("load", () => {
       if (target) scroll.scrollTo(target);
     });
   });
-
-
-    // ✅ Update scroll after layout change
-    setTimeout(() => scroll.update(), 300);
-  }
-
-  // Initial check
-  checkScreen();
-
   // Recheck on resize
   window.addEventListener("resize", () => {
     checkScreen();
@@ -533,6 +524,7 @@ window.addEventListener("load", () => {
 });
 </script>
 </body>
+
 
 
 
