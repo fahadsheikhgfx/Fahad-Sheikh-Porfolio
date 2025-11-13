@@ -87,17 +87,23 @@
     }
 @media screen and (min-height: 800px) {
     .top-section {
-        margin-top: 12vh;
+        margin-top: 10vh;
     }
 }
-@media (min-width: 700px) {
+@media (min-width: 517px) {
+    .top-section {
+        margin: auto ;
+    }
     .profile-background img{
-        display: flex;
-        position: fixed;
-        bottom: 30vw;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block; 
     }
     .fahadsheikh-picture img{
         display: none;
     }
 }
+
 
