@@ -87,7 +87,7 @@
     }
 @media screen and (min-height: 800px) {
     .top-section {
-        margin-top: 13vh;
+        margin-top: 12vh;
     }
 }
 @media (min-width: 700px) {
@@ -100,3 +100,4 @@
         display: none;
     }
 }
+
