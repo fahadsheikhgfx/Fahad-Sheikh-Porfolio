@@ -174,9 +174,8 @@ const availabilityTag = document.querySelector('.availability-tag');
 availabilityTag.innerHTML = `<span class="status-dot"></span> ${projectsLeft} projects left in ${currentMonth}`;
 
 
-  if (window.innerWidth <= 1000) {
-    window.location.replace("Mobile-Preview/mobilepreview.html");
-  }
+
+
 
 
 
