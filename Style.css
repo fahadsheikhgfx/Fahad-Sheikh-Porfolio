@@ -1518,8 +1518,11 @@ opacity: 0.5;
     .form-group.small {
         flex: 1;
     }
-
-
+}
+@media (max-width: 1000px){
+  body{
+    display: none !important;
+  }
 }
 
 
