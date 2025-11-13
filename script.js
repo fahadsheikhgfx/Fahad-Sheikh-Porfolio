@@ -174,4 +174,27 @@ const availabilityTag = document.querySelector('.availability-tag');
 availabilityTag.innerHTML = `<span class="status-dot"></span> ${projectsLeft} projects left in ${currentMonth}`;
 
 
+  if (window.innerWidth <= 1000) {
+    document.body.innerHTML = `
+      <div style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        font-size: 1.2rem;
+      ">
+        Redirecting to mobile view...
+      </div>
+    `;
+    setTimeout(() => {
+      window.location.href = "Mobile-Preview/mobilepreview.html";
+    }, 1000);
+  }
+
+
+
+
 
