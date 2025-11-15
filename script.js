@@ -67,19 +67,22 @@ const scroll = new LocomotiveScroll({
   smoothMobile: true,
 });
 
+// Smooth anchor links for LocomotiveScroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
-    e.preventDefault(); // Stop the default jump
+    e.preventDefault();
 
-    const target = this.getAttribute('href');
-    const targetElem = document.querySelector(target);
-
+    const targetElem = document.querySelector(this.getAttribute('href'));
     if (targetElem) {
-      // Tell Locomotive Scroll to scroll to it smoothly
-      scroll.scrollTo(targetElem);
+      scroll.scrollTo(targetElem, {
+        offset: 0,
+        duration: 800,
+        easing: [0.25, 0.0, 0.35, 1.0],
+      });
     }
   });
 });
+
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log('dropdown-wheel-fix loaded');
@@ -182,6 +185,7 @@ const availabilityTag = document.querySelector('.availability-tag');
 
 
 availabilityTag.innerHTML = `<span class="status-dot"></span> ${projectsLeft} projects left in ${currentMonth}`;
+
 
 
 
