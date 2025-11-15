@@ -172,7 +172,14 @@ const availabilityTag = document.querySelector('.availability-tag');
 
 
 availabilityTag.innerHTML = `<span class="status-dot"></span> ${projectsLeft} projects left in ${currentMonth}`;
-
+//clickable-service-cards
+  document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelector('#contact').scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
 
 
 
