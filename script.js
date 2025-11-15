@@ -49,14 +49,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
-//clickable-service-cards
-  document.querySelectorAll('.service-card').forEach(card => {
-    card.addEventListener('click', () => {
-      document.querySelector('#contact').scrollIntoView({
-        behavior: 'smooth'
-      });
+// Clickable service cards (LocomotiveScroll compatible)
+document.querySelectorAll('.service-card').forEach(card => {
+  card.addEventListener('click', () => {
+    scroll.scrollTo('#contact', {
+      offset: 0,
+      duration: 800,
+      easing: [0.25, 0.0, 0.35, 1.0],
     });
   });
+});
 
 // LocomotiveScroll initialization
 const scroll = new LocomotiveScroll({
@@ -180,6 +182,7 @@ const availabilityTag = document.querySelector('.availability-tag');
 
 
 availabilityTag.innerHTML = `<span class="status-dot"></span> ${projectsLeft} projects left in ${currentMonth}`;
+
 
 
 
