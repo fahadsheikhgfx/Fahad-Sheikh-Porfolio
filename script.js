@@ -198,7 +198,7 @@ if (contactForm) {
 
     try {
       const response = await fetch(
-        "portfolio-contact-backend-production-73e1.up.railway.app",
+        "portfolio-contact-backend-production-73e1.up.railway.app/api/contact",
         {
           method: "POST",
           headers: {
