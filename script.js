@@ -187,18 +187,41 @@ document.querySelectorAll('.service-card').forEach(card => {
   });
 });
 
-const response = await fetch(
-  "portfolio-contact-backend-production-73e1.up.railway.app",
-  {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
-  }
-);
+const contactForm = document.getElementById("contact-form");
 
+if (contactForm) {
+  contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
+    const formData = new FormData(contactForm);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch(
+        "https://portfolio-contact-backend-production-73e1.up.railway.app/api/contact",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
+
+      const result = await response.json();
+
+      if (result.success) {
+        alert("Message sent successfully!");
+        contactForm.reset();
+      } else {
+        alert(result.message || "Failed to send message.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong.");
+    }
+  });
+}
 
 
 
