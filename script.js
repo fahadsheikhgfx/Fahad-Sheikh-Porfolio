@@ -187,6 +187,16 @@ document.querySelectorAll('.service-card').forEach(card => {
   });
 });
 
+const response = await fetch(
+  "portfolio-contact-backend-production-73e1.up.railway.app",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  }
+);
 
 
 
